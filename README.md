@@ -1,1 +1,1 @@
-# DZ-Hillel
+# DZ-Hillel test project
