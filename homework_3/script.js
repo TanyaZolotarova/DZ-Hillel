@@ -17,3 +17,11 @@ console.log('undefinedValue ==',typeof undefinedValue);
 console.log('isTrue ==',typeof isTrue);
 console.log('symbol ==',typeof symbol);
 console.log('obj ==',typeof obj);
+
+
+//create 3 strings and output them using template literals
+
+const city = 'Kharkiv';
+const country = 'Ukraine';
+const name = 'Tetiana';
+const message = `My name is ${name}, i'm from ${city}, ${country}`;
