@@ -25,3 +25,12 @@ const city = 'Kharkiv';
 const country = 'Ukraine';
 const name = 'Tetiana';
 const message = `My name is ${name}, i'm from ${city}, ${country}`;
+
+
+//decompose a five-digit number by digits and output in the original order through a space
+
+const number = 55555;
+const numberString = number.toString();
+const result = numberString.split('').join(' ');
+
+console.log(result);
