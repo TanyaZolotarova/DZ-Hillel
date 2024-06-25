@@ -10,3 +10,20 @@ while ( a <= 30){
     console.log('cycle for------2 ==', a);
     a = a += 0.5;
 }
+
+//Один долар коштує 26 гривень. Вивести дані з розрахунком вартості 10, 20, 30... 100 доларів
+
+const uah = 26;
+
+for(let usd = 10; usd <= 100; usd += 10){
+    let exchange = uah * usd;
+    console.log('exchange----------For ==', exchange);
+}
+
+let dollar = 10;
+
+while(dollar <= 100){
+    let exchange = uah * dollar;
+    console.log('exchange----------while ==', exchange);
+    dollar = dollar += 10;
+}
