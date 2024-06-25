@@ -3,3 +3,10 @@
 for( let i = 20; i <= 30;  i += 0.5){
     console.log('cycle for ==', i);
 }
+
+let a = 20;
+
+while ( a <= 30){
+    console.log('cycle for------2 ==', a);
+    a = a += 0.5;
+}
