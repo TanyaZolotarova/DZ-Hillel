@@ -27,3 +27,31 @@ while(dollar <= 100){
     console.log('exchange----------while ==', exchange);
     dollar = dollar += 10;
 }
+
+
+//Дано ціле число N (ввести через prompt). Вивести всі цілі числа від 1 до 100, квадрат яких не перевищує числа N
+
+const N = parseInt(prompt('Please enter some number:'), 10);
+
+if(!isNaN(N)){
+    let i = 1;
+    let message = '';
+
+    while (i <= 100){
+        if (Math.pow(i, 2) <= N) {
+            message = message += i + ' ';
+        }
+        i++;
+    }
+    alert(message);
+} else {
+    console.log('isNaN');
+}
+
+
+
+
+
+
+
+
