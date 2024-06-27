@@ -49,9 +49,28 @@ if(!isNaN(N)){
 }
 
 
+// Дано ціле число (ввести через 'prompt'). З'ясувати, чи просто воно (простим називається число, більше 1, що не має інших дільників, крім 1 і себе)
 
 
+const num = parseInt(prompt('Please enter some number:'), 10);
+let primeNum = true;
 
 
+if (num <= 1) {
+    primeNum = false;
+} else {
 
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            primeNum = false;
+            break;
+        }
+    }
+}
+
+if (primeNum) {
+    alert(`your number ${num} is prime`);
+} else {
+    alert(`your number ${num} is not prime`);
+}
 
