@@ -1,6 +1,10 @@
 // Вивести в консоль числа від 20 до 30 через пропуск використовуючи крок 0,5 (20 20,5 21 21,5 ....)
 
-for( let i = 20; i <= 30;  i += 0.5){
+const maxNumber = 30;
+const step = 0.5;
+
+
+for( let i = 20; i <= maxNumber;  i += step){
     console.log('cycle for ==', i);
 }
 
@@ -14,31 +18,34 @@ while ( a <= 30){
 //Один долар коштує 26 гривень. Вивести дані з розрахунком вартості 10, 20, 30... 100 доларів
 
 const uah = 26;
+const maxNum = 100;
+const nextStep = 10;
 
-for(let usd = 10; usd <= 100; usd += 10){
+for(let usd = 10; usd <= maxNum; usd += nextStep){
     let exchange = uah * usd;
     console.log('exchange----------For ==', exchange);
 }
 
 let dollar = 10;
 
-while(dollar <= 100){
+while(dollar <= maxNum){
     let exchange = uah * dollar;
     console.log('exchange----------while ==', exchange);
-    dollar = dollar += 10;
+    dollar = dollar += nextStep;
 }
 
 
 //Дано ціле число N (ввести через prompt). Вивести всі цілі числа від 1 до 100, квадрат яких не перевищує числа N
 
 const N = parseInt(prompt('Please enter some number:'), 10);
+const degreeNum = 2;
 
 if(!isNaN(N)){
     let i = 1;
     let message = '';
 
-    while (i <= 100){
-        if (Math.pow(i, 2) <= N) {
+    while (i <= maxNum){
+        if (Math.pow(i, degreeNum) <= N) {
             message = message += i + ' ';
         }
         i++;
