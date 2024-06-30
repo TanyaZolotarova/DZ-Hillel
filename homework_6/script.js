@@ -15,3 +15,24 @@ function removeElement (array, item){
 
 removeElement(arr, 3);
 console.log('array -------------- ==',arr)
+
+
+// Дано масив з елементами різних типів. Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
+
+const array = ['blue', 55, {a: 1}, true, 5, null, 555];
+
+function averageSum (arr){
+
+    let numbers = arr.filter(element => typeof element === 'number');
+    if (numbers.length === 0) {
+        return null;
+    }
+
+    let sum = numbers.reduce((acc, num) => acc + num, 0);
+    return sum / numbers.length;
+
+}
+
+console.log('Average Sum ---------- ==',averageSum(array));
+
+
