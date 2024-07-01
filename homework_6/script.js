@@ -36,3 +36,29 @@ function averageSum (arr){
 console.log('Average Sum ---------- ==',averageSum(array));
 
 
+// Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом.
+// 'func(" hello world", ['l', 'd'])' поверне нам "heo wor". Вихідний рядок та символи для видалення задає користувач.
+
+
+const userString = prompt('Please enter a few words: ');
+const userRemoveSymbol = prompt('Please enter the symbols to be deleted: ');
+const removeSymbol = userRemoveSymbol.split('');
+function removeSymbols(userString, userRemoveSymbol) {
+
+    const removeSymbolSet = new Set(userRemoveSymbol);
+
+    let resultString = '';
+    for (let smb of userString) {
+        if (!removeSymbolSet.has(smb)) {
+            resultString += smb;
+        }
+    }
+    return resultString;
+}
+
+const result = removeSymbols(userString, userRemoveSymbol);
+alert(result);
+
+
+
+
