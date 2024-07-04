@@ -54,3 +54,39 @@ console.log(sumNum(6));
 console.log(sumNum(10));
 console.log(sumNum(7));
 
+
+
+// Цикл на кожній ітерації пропонує через prompt ввести число більше 100 (але максимум 10 ітерацій циклу) .
+// Якщо відвідувач ввів число менше ста – попросити ввести ще раз, і таке інше.
+//Якщо користувач вводить більше ста, текст або цикл закінчує всі ітерації,
+// то функція виводить в консоль останній введення користувача і завершує функцію.
+
+
+function showUserNumber (){
+
+    const minNum = 100;
+    const maxIteration = 10;
+    let i = 0;
+    let userNum;
+
+    while ( i < maxIteration ){
+        userNum = prompt("Please enter a number greater than 100: ");
+
+        if (userNum === null) {
+            console.log("User cancelled the prompt.");
+            return;
+        }
+        userNum = +userNum;
+
+        if (!isNaN(userNum) && userNum > minNum) {
+            console.log("Last input Last input validated: " + userNum);
+            return;
+        }
+        i++;
+    }
+    console.log("Last input: " + userNum);
+
+}
+
+showUserNumber();
+
