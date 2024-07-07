@@ -23,16 +23,16 @@ let ladder = {
     up: function () {
         console.log('Up --------- == ', this.step);
         this.step++
-        return this.step;
+        return this;
     },
     down: function () {
         console.log('down --------- == ', this.step);
         this.step--
-        return this.step;
+        return this;
     },
     showStep: function () {
         console.log('showStep --------- == ', this.step);
-        return this.step;
+        return this;
     }
 };
 
