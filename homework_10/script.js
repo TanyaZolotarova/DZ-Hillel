@@ -25,6 +25,13 @@ const showPersonInfo = showUserInfo(User);
 console.log('showPersonInfo-----------', showPersonInfo)
 
 
+//ДЗ 10.2. Отримання парних чисел з масиву
+//Маєте масив чисел. Використовуйте вже існуючі методи масиву для створення нового масиву,
+// в якому лише парні числа з оригінального масиву.
 
 
+const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+const newArrNumbers = arrNumbers.filter(num => num % 2 === 0);
+
+console.log('newArrNumbers ----------- == ', newArrNumbers)
