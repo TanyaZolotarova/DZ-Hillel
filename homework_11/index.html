@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pythagorean table</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .column {
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    .item {
+        padding: 5px;
+        border: 1px solid #000;
+        margin: 1px;
+        text-align: center;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    const heading = document.createElement('h1');
+    heading.textContent = 'Таблиця Піфагора (10×10)';
+    document.body.appendChild(heading);
+
+
+    const container = document.createElement('div');
+    container.className = 'container';
+    document.body.appendChild(container);
+
+
+    for (let col = 1; col <= 10; col++) {
+        const columnDiv = document.createElement('div');
+        columnDiv.className = 'column';
+        for (let row = 1; row <= 10; row++) {
+            const item = document.createElement('div');
+            item.className = 'item';
+            item.textContent = `${row} x ${col} = ${row * col}`;
+            columnDiv.appendChild(item);
+        }
+        container.appendChild(columnDiv);
+    }
+
+</script>
+</html>
