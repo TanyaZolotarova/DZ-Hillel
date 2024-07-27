@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="css/style.css"/>
+<body>
+<div class="container">
+
+    <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut,
+        commodi consectetur culpa doloremque esse fuga harum iure laboriosam laborum nam,
+        nostrum odio porro praesentium provident quia saepe sed unde.</p>
+    <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut,
+        commodi consectetur culpa doloremque esse fuga harum iure laboriosam laborum nam,
+        nostrum odio porro praesentium provident quia saepe sed unde.</p>
+
+    <div class="btn_holder">
+        <button class="btn btn-hover hover-border"><span>Change color text</span></button>
+    </div>
+
+</div>
+
+</body>
+<script>
+
+    const btn = document.querySelector('button');
+    const text = document.querySelectorAll('.text');
+
+    function changeColor() {
+
+        const defaultColor = '';
+        const newColor = '#0ecce5';
+
+        btn.addEventListener('click', function () {
+            text.forEach(el => {
+                if (el.style.color === defaultColor) {
+                    el.style.color = newColor;
+                } else {
+                    el.style.color = defaultColor;
+                }
+            })
+        });
+
+    }
+
+    changeColor();
+
+
+</script>
+</html>
