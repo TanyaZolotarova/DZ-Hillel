@@ -11,6 +11,7 @@ body {
     margin: 0;
     padding: 20px;
     font-family: Arial, sans-serif;
+    height: 100%;
 }
 
 .container {
@@ -127,4 +128,15 @@ body {
 .btn.hover-border span:hover::before,
 .btn.hover-border span:hover::after {
     height: 0%;
+}
+
+
+#images {
+    display: none;
+    width: 500px;
+    height: 300px;
+    border-radius: 50%;
+    border: #000000 solid 2px;
+    position: absolute;
+    transition: top 2s, left 2s;
 }

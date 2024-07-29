@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random image</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div class="btn_holder">
+    <button id="button" class="btn btn-hover hover-border"> Click me</button>
+</div>
+
+<div class="container">
+    <img id="images" src="" alt="cats">
+</div>
+
+</body>
+<script>
+
+    const images = ['img/cat_1.jpg', 'img/cat_2.jpg', 'img/cat_3.jpg', 'img/cat_4.jpg', 'img/cat_5.jpg', 'img/cat_6.jpg',
+        'img/cat_7.jpg', 'img/cat_8.jpg', 'img/cat_9.jpg'];
+    const btn = document.querySelector('#button');
+    const randomImg = document.querySelector('#images');
+    function randomButtonClick() {
+        btn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            randomImg.src = images[randomIndex];
+            randomImg.style.display = 'block';
+        });
+    }
+    function showAnimatedImg() {
+        randomImg.addEventListener('mouseover', () => {
+            const maxWidth = window.innerWidth - randomImg.width;
+            const maxHeight = window.innerHeight - randomImg.height;
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+            randomImg.style.left = `${randomX}px`;
+            randomImg.style.top = `${randomY}px`;
+        })
+    }
+
+    randomButtonClick();
+    showAnimatedImg();
+
+
+</script>
+</html>
