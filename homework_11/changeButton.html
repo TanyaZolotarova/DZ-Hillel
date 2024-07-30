@@ -35,7 +35,11 @@
         const defaultColor = '';
         const newColor = '#0ecce5';
 
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
+            console.log('event obj ============== ', e);
+            console.log('event target ============', e.target);
+            console.log('this ============== ', this)
+
             text.forEach(el => {
                 if (el.style.color === defaultColor) {
                     el.style.color = newColor;
