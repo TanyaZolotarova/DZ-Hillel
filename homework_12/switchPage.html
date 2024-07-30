@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch to a page</title>
+</head>
+<body>
+</body>
+<script>
+
+    const container = document.createElement('div');
+    container.className = 'container'
+    container.style.cssText = `
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2% 8%;
+    `;
+    document.body.appendChild(container);
+
+    const inputBtn = document.createElement('button');
+    inputBtn.textContent = 'enter click';
+    inputBtn.style.cssText = `
+    margin: 20px 25px 15px;
+    min-width: 150px;
+    padding: 5px;
+    background-color: #A8A2A2FF;
+    font-weight: 600;
+    cursor: pointer;
+    `
+    container.appendChild(inputBtn);
+
+    const redirectBtn = document.createElement('button');
+    redirectBtn.textContent = 'redirection click';
+    redirectBtn.style.cssText = `
+    margin: 20px 25px 15px;
+    min-width: 150px;
+    padding: 5px;
+    background-color: #00ffff;
+    font-weight: 600;
+    cursor: pointer;
+    `
+    container.appendChild(redirectBtn);
+
+    let userLink = '';
+
+    function inputLink() {
+
+        inputBtn.addEventListener('click', () => {
+
+            userLink = prompt('Please enter some a link to an example: google.com',);
+
+            if (userLink.trim() === '') {
+                alert('Please enter some link');
+            } else if (userLink.startsWith('https://') || userLink.startsWith('http://')) {
+                alert('Please enter a valid link without https:// or http://');
+            } else {
+                console.log(' link saved ');
+            }
+
+        })
+
+    }
+
+    function redirectToLink() {
+        redirectBtn.addEventListener('click', () => {
+
+            if (userLink) {
+                window.location.href = `https://www.${userLink}`;
+            } else {
+                alert('Please enter some a link')
+            }
+
+        })
+
+    }
+
+    inputLink()
+    redirectToLink()
+
+</script>
+</html>
