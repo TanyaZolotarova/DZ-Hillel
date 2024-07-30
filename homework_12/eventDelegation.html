@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event delegation</title>
+</head>
+<body>
+</body>
+<script>
+
+    const container = document.createElement('div');
+    container.className = 'container';
+    container.style.cssText = `
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2% 8%;
+    margin: 5% 15%;
+    justify-content: space-around;
+    `;
+    document.body.appendChild(container);
+
+    const btn1 = document.createElement('button');
+    btn1.className = 'btn1';
+    btn1.textContent = ' Кнопка 1';
+    container.appendChild(btn1);
+
+    const btn2 = document.createElement('button');
+    btn2.className = 'btn2';
+    btn2.textContent = 'Кнопка 2';
+    container.appendChild(btn2);
+
+    const btn3 = document.createElement('button');
+    btn3.className = 'btn3';
+    btn3.textContent = 'Кнопка 3';
+    container.appendChild(btn3);
+
+
+    function onClick() {
+
+        container.addEventListener('click', (evt) => {
+
+            if (evt.target.localName === 'button') {
+                alert('Клікнуто на кнопці:' + evt.target.textContent)
+            }
+
+        })
+    }
+
+    onClick()
+
+</script>
+</html>
