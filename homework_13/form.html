@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+</head>
+<body>
+</body>
+<script>
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'wrapper';
+    document.body.appendChild(wrapper);
+
+    const form = document.createElement('form');
+    form.style.cssText = `
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    margin: auto;
+    `
+    form.setAttribute('novalidate', true);
+    wrapper.appendChild(form);
+
+    const h2 = document.createElement('h2');
+    h2.textContent = 'We would like to help you';
+    h2.style.color = 'cadetblue';
+    form.appendChild(h2);
+
+    const userName = document.createElement('input');
+    userName.placeholder = 'Name';
+    userName.name = 'name';
+    userName.type = 'text';
+    userName.style.marginBottom = '10px';
+    userName.required = true;
+    form.appendChild(userName);
+
+    const nameError = document.createElement('span');
+    nameError.className = 'error';
+    nameError.style.cssText = `
+    font-size: 12px;
+    color: red;
+    margin-bottom: 15px;
+    `
+    form.appendChild(nameError);
+
+    const message = document.createElement('textarea');
+    message.placeholder = 'Message';
+    message.name = 'text';
+    message.type = 'text';
+    message.style.marginBottom = '10px';
+    message.minLength = 5;
+    form.appendChild(message);
+
+    const messageError = document.createElement('span');
+    messageError.className = 'error';
+    messageError.style.cssText = `
+    font-size: 12px;
+    color: red;
+    margin-bottom: 15px;
+    `
+    form.appendChild(messageError);
+
+    const h3 = document.createElement('h3');
+    h3.textContent = 'How to answer you?';
+    h3.style.cssText = `
+    font-size: 16px;
+    color: darkgray;
+    `
+    form.appendChild(h3);
+
+    const userPhone = document.createElement('input');
+    userPhone.placeholder = 'Phone number';
+    userPhone.name = 'number';
+    userPhone.type = 'tel';
+    userPhone.style.marginBottom = '10px';
+    userPhone.required = true;
+    form.appendChild(userPhone);
+
+    const phoneError = document.createElement('span');
+    phoneError.className = 'error';
+    phoneError.style.cssText = `
+    font-size: 12px;
+    color: red;
+    margin-bottom: 15px;
+    `
+    form.appendChild(phoneError);
+
+    const userEmail = document.createElement('input');
+    userEmail.placeholder = 'Email';
+    userEmail.name = 'email';
+    userEmail.type = 'email';
+    userEmail.style.marginBottom = '10px';
+    userEmail.required = true;
+    form.appendChild(userEmail);
+
+    const emailError = document.createElement('span');
+    emailError.className = 'error';
+    emailError.style.cssText = `
+    font-size: 12px;
+    color: red;
+    margin-bottom: 15px;
+    `
+    form.appendChild(emailError);
+
+    const buttonSub = document.createElement('button');
+    buttonSub.textContent = 'Send message';
+    buttonSub.type = 'submit';
+    form.appendChild(buttonSub);
+
+
+
+    function showUserData () {
+      form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          let isValid = true;
+
+          if(userName.value.trim() === '') {
+              nameError.textContent = '*Поле имя обязательно к заполнению'
+              isValid = false;
+          } else {
+              nameError.textContent = '';
+          }
+
+          if (message.value.length < 5) {
+              messageError.textContent = '*Сообщение должно содержать не менее 5 символов';
+              isValid = false;
+          }  else {
+              messageError.textContent = '';
+          }
+
+          const phonePattern = /^\+380\d{9}$/;
+          if(!phonePattern.test(userPhone.value)){
+              phoneError.textContent = '*Номер телефона должен начинаться с +380 и содержать 9 цифр';
+              isValid = false;
+          } else {
+              phoneError.textContent = '';
+          }
+
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if(!emailPattern.test(userEmail.value)){
+              emailError.textContent = '*Введите действительный адрес электронной почты';
+              isValid = false;
+
+          } else {
+              emailError.textContent = '';
+          }
+
+          if(isValid){
+              const data = Object.fromEntries(new FormData(event.target).entries());
+              console.log('User data -------------- == ', data);
+
+              form.reset();
+          }
+
+      })
+    }
+
+
+    showUserData ()
+
+
+
+
+
+</script>
+</html>
