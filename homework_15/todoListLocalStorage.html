@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO List</title>
+</head>
+<body>
+
+
+<script>
+
+    const container = document.createElement('div');
+    container.className = 'container';
+    container.style.cssText = `
+    width: 100%;
+    margin: 0 auto;
+    max-width: 75%;
+`;
+    document.body.appendChild(container);
+
+    const titleText = document.createElement('h1');
+    titleText.textContent = 'ToDo List';
+    titleText.style.cssText = `
+    text-align: center;
+    margin-bottom: 15px;
+    color: cadetblue;
+`;
+    container.appendChild(titleText);
+
+    const form = document.createElement('form');
+    form.classList.add('form', 'js__form');
+    form.style.cssText = `
+    background: #fff;
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+`;
+    container.appendChild(form);
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'value';
+    input.classList.add('form__input');
+    input.style.cssText = `
+    min-height: 25px;
+    padding: 7px;
+    margin-right: 10px;
+    width: 100%;
+    border: 1px solid;
+`;
+    form.appendChild(input);
+
+    const addBtn = document.createElement('button');
+    addBtn.textContent = 'Add';
+    addBtn.className = 'form__btn';
+    addBtn.style.cssText = `
+    background: cadetblue;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+`;
+    form.appendChild(addBtn);
+
+    const ulWrapper = document.createElement('ul');
+    ulWrapper.style.cssText = `
+    margin-top: 20px;
+    padding: 0;
+    list-style-type: none;
+`;
+    container.appendChild(ulWrapper);
+
+    function saveTasks() {
+
+        const tasks = [];
+        ulWrapper.querySelectorAll('li').forEach((li) => {
+            const task = {
+                text: li.querySelector('span').textContent,
+                completed: li.querySelector('input[type="checkbox"]').checked
+            };
+            tasks.push(task);
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    }
+
+    function loadTasks() {
+
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        savedTasks.forEach((task) => {
+            createTaskElement(task.text, task.completed);
+        });
+
+    }
+
+    function createTaskElement(text, completed = false) {
+
+        const newLi = document.createElement('li');
+        newLi.style.cssText = `
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    `;
+        ulWrapper.appendChild(newLi);
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.style.marginRight = '10px';
+        checkbox.checked = completed;
+        newLi.appendChild(checkbox);
+
+        const spanText = document.createElement('span');
+        spanText.textContent = text;
+        newLi.appendChild(spanText);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'delete';
+        deleteBtn.style.cssText = `
+        background: indianred;
+        border: none;
+        margin-left: 10px;
+        padding: 5px;
+    `;
+        deleteBtn.className = 'delete';
+        newLi.appendChild(deleteBtn);
+
+    }
+
+    function addList() {
+
+        form.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+
+            const userItem = input.value.trim();
+
+            if (userItem !== '') {
+                createTaskElement(userItem);
+                input.value = '';
+                saveTasks();
+            } else {
+                alert('Please Enter a Value');
+            }
+        });
+    }
+
+    function deleteList() {
+
+        ulWrapper.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('delete')) {
+                const li = evt.target.parentElement;
+                ulWrapper.removeChild(li);
+                saveTasks();
+            }
+        });
+
+    }
+
+    function handleCheckboxChange() {
+
+        ulWrapper.addEventListener('change', (evt) => {
+            if (evt.target.type === 'checkbox') {
+                saveTasks();
+            }
+        });
+
+    }
+
+
+    loadTasks();
+    addList();
+    deleteList();
+    handleCheckboxChange();
+
+
+</script>
+</body>
+</html>
