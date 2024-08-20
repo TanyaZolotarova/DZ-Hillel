@@ -24,3 +24,32 @@ const coach_2 = new Coach('Gai', 'Maito', 'taijutsu', 4.6);
 
 coach_1.getInfo()
 coach_2.getInfo()
+
+
+
+//ДЗ 17.1. Клас "Калькулятор"
+//Створіть клас Calculator, який буде мати методи для виконання базових математичних операцій: додавання, віднімання, множення та ділення.
+
+
+class Calculator {
+    add(num1, num2){
+        return num1 + num2;
+    }
+    subtract(num1, num2){
+        return num1 - num2;
+    }
+    multiply(num1, num2){
+        return num1 * num2;
+    }
+    divide(num1, num2){
+        return num1 / num2;
+    }
+}
+
+
+const calc = new Calculator();
+
+console.log('add ----- == ', calc.add(5,3))
+console.log('subtract ----- == ', calc.subtract(10,4))
+console.log('multiply ----- == ', calc.multiply(3,6))
+console.log('divide ----- == ', calc.divide(8,2))
