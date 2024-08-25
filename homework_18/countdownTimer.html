@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Countdown timer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+
+<script>
+
+    const container = document.createElement('div');
+    container.className = 'container';
+    container.style.cssText = `
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    `
+    document.body.appendChild(container);
+
+    const h1 = document.createElement('h1');
+    h1.textContent = 'Countdown timer';
+    h1.className = 'title';
+    h1.style.cssText = `
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+    `
+    container.appendChild(h1);
+
+    const countdown = document.createElement('div');
+    countdown.className = 'countdown';
+    countdown.textContent = '01:25';
+    countdown.style.cssText = `
+     font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #444;
+    `
+    container.appendChild(countdown);
+
+    const btnWrapper = document.createElement('div');
+    btnWrapper.className = 'btnWrapper';
+    btnWrapper.style.cssText = `
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    `
+    container.appendChild(btnWrapper);
+
+    const startBtn = document.createElement('button');
+    startBtn.className = 'startBtn';
+    startBtn.textContent = 'Start';
+    startBtn.style.cssText = `
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #4caf50;
+    `
+    btnWrapper.appendChild(startBtn);
+
+    const stopBtn = document.createElement('button');
+    stopBtn.className = 'stopBtn';
+    stopBtn.textContent = 'Stop';
+    stopBtn.style.cssText = `
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #f44336;
+    `
+    btnWrapper.appendChild(stopBtn);
+
+
+    function formatTime(seconds) {
+        const date = new Date(seconds * 1000);
+        let minutes = date.getMinutes();
+        let sec = date.getSeconds();
+
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+
+        if (sec < 10) {
+            sec = '0' + sec;
+        }
+
+        return `${minutes}:${sec}`
+    }
+
+    function showTimer() {
+        let timer;
+        let count = 85;
+
+        startBtn.addEventListener('click', () => {
+            if (!timer) {
+                timer = setInterval(() => {
+                    if (count > 0) {
+                        count--;
+                        countdown.textContent = formatTime(count);
+                        console.log('startBtn', count);
+                    } else {
+                        clearInterval(timer);
+                        timer = null;
+                    }
+                }, 1000);
+            }
+        });
+
+        stopBtn.addEventListener('click', () => {
+            clearInterval(timer);
+            timer = null;
+        });
+    }
+
+    showTimer()
+
+
+</script>
+</body>
+</html>
