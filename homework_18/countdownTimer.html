@@ -22,7 +22,6 @@
 <body>
 
 <script>
-
     const container = document.createElement('div');
     container.className = 'container';
     container.style.cssText = `
@@ -98,13 +97,9 @@
         let minutes = date.getMinutes();
         let sec = date.getSeconds();
 
-        if (minutes < 10) {
-            minutes = '0' + minutes;
-        }
+        if (minutes < 10) minutes = '0' + minutes;
 
-        if (sec < 10) {
-            sec = '0' + sec;
-        }
+        if (sec < 10) sec = '0' + sec;
 
         return `${minutes}:${sec}`
     }
@@ -119,11 +114,11 @@
                     if (count > 0) {
                         count--;
                         countdown.textContent = formatTime(count);
-                        console.log('startBtn', count);
-                    } else {
-                        clearInterval(timer);
-                        timer = null;
+                        return;
                     }
+                    clearInterval(timer);
+                    timer = null;
+
                 }, 1000);
             }
         });
@@ -136,7 +131,7 @@
 
     showTimer()
 
-
 </script>
+
 </body>
 </html>
